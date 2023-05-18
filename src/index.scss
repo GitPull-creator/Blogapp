@@ -1,0 +1,34 @@
+@import-normalize;
+
+@font-face {
+  font-family: "Inter";
+  src: url("./resources/fonts/Inter-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  // font-family: "Inter", sans-serif;
+  min-height: 100vh;
+  // display: flex;
+  // justify-content: center;
+  // height: 100%;
+  background-color: #e5e5e5;
+}
+
+// h2 {
+//   font-size: 20px;
+//   line-height: 28px;
+// }
+
+// h3 {
+//   font-size: 18px;
+//   line-height: 28px;
+// }
