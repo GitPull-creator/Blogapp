@@ -1,5 +1,6 @@
-.Article {
+.ShortArticle {
   width: 70%;
+  height: 140px;
   background-color: white;
   margin: 26px auto 0;
   padding: 15px 15px 24px 20px;
@@ -10,8 +11,6 @@
   display: flex;
   justify-content: space-between;
   transition: 0.5s all;
-  animation: appearing 0.3s ease-out;
-  flex: 1 0 auto;
 }
 
 .title {
@@ -26,16 +25,17 @@
     margin-top: 0;
     margin-bottom: 0;
     overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* number of lines to show */
-    line-clamp: 3;
-    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    max-height: 50px;
+    white-space: nowrap;
+
     cursor: pointer;
     a {
       text-decoration: none;
       color: #1890ff;
       &:visited {
-        color: #dda0dd;
+        color: #c017e6;
       }
     }
   }
@@ -47,7 +47,6 @@
     position: relative;
     input {
       cursor: pointer;
-
       opacity: 0;
       &:checked + span::before {
         background-image: url('../../assets/images/Like-filled.png');
@@ -99,7 +98,7 @@ svg {
   display: flex;
   list-style-type: none;
   padding-left: 0;
-  margin-top: 0;
+  flex-wrap: wrap;
   li {
     margin-right: 8px;
   }
@@ -112,10 +111,7 @@ svg {
   margin-top: 4px;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
+  white-space: nowrap;
 }
 
 .wrapper {
@@ -130,15 +126,11 @@ svg {
 .user {
   display: flex;
   flex-direction: row;
-  justify-content: end;
   &__avatar {
     width: 46px;
     height: 46px;
     margin-left: 12px;
     border-radius: 50%;
-    display: block;
-    background-position: center center;
-    background-image: url(https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper.png);
   }
   &__name {
     font-size: 18px;
@@ -156,54 +148,5 @@ svg {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-  }
-  &__buttons {
-    display: flex;
-    justify-content: end;
-  }
-}
-
-.delete,
-.edit {
-  width: 78px;
-  height: 31px;
-  margin-right: 17px;
-  font-size: 14px;
-  display: block;
-  margin-top: 30px;
-  text-align: center;
-  background-color: inherit;
-  border-radius: 5px;
-  font-weight: 400;
-  transition: 0.4s;
-  text-decoration: none;
-  cursor: pointer;
-  border: 1px solid red;
-  color: red;
-  &:hover {
-    background-color: red;
-    color: white;
-    border: none;
-  }
-}
-
-.edit {
-  border: 1px solid #52c41a;
-  color: #52c41a;
-  margin-right: 0;
-  &:hover {
-    background-color: #52c41a;
-    color: white;
-    border: none;
-  }
-}
-
-@keyframes appearing {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
   }
 }
