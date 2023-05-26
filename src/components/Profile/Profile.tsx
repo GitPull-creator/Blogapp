@@ -56,9 +56,7 @@ const Profile = () => {
 
   const onSubmit = handleSubmit((data) => {
     console.log(data);
-    const changedData = Object.fromEntries(
-      Object.entries(data).filter(([key, value]) => value !== '' && value !== null)
-    );
+    const changedData = Object.fromEntries(Object.entries(data).filter(([, value]) => value !== '' && value !== null));
     console.log('changed', changedData);
     dispatch(fetchUpdateProfile(changedData));
   });

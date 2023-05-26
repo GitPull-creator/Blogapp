@@ -134,8 +134,8 @@ const userSlice = createSlice({
         state.user = action.payload.user;
         state.error = 'none';
       })
-      .addCase(fetchRegistration.rejected, (state, action: PayloadAction<any>) => {
-        state.error = action.payload;
+      .addCase(fetchRegistration.rejected, (state, action: PayloadAction<unknown>) => {
+        if (typeof action.payload === 'string') state.error = action.payload;
       })
       .addCase(fetchUser.pending, (state) => {
         state.userLoading = true;
@@ -151,15 +151,15 @@ const userSlice = createSlice({
         state.user = action.payload.user;
         state.error = 'none';
       })
-      .addCase(fetchLogin.rejected, (state, action: PayloadAction<any>) => {
-        state.error = action.payload;
+      .addCase(fetchLogin.rejected, (state, action: PayloadAction<unknown>) => {
+        if (typeof action.payload === 'string') state.error = action.payload;
       })
       .addCase(fetchUpdateProfile.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.error = 'none';
       })
-      .addCase(fetchUpdateProfile.rejected, (state, action: PayloadAction<any>) => {
-        state.error = action.payload;
+      .addCase(fetchUpdateProfile.rejected, (state, action: PayloadAction<unknown>) => {
+        if (typeof action.payload === 'string') state.error = action.payload;
       });
   },
 });

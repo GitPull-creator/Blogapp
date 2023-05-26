@@ -130,7 +130,7 @@ svg {
 .user {
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: flex-end;
   &__avatar {
     width: 46px;
     height: 46px;
@@ -158,7 +158,7 @@ svg {
   }
   &__buttons {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
   }
 }
 

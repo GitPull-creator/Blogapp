@@ -33,8 +33,6 @@ const Article = () => {
   const username = useAppSelector((state) => state.user.user.username);
   const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
 
-  console.log('from article', currentArticle);
-
   const deleteBtn =
     currentArticle?.author?.username === username && isLoggedIn ? (
       <>

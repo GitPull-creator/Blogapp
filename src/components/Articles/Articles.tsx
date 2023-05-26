@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from '../types/hooks';
 import { fetchArticles } from '../../store/articlesSlice';
 import ShortArticle from '../ShortArticle/ShortArticle';
 import Spinner from '../Spinner/Spinner';
+import { ArticleType } from '../types/types';
 
 import classes from './Articles.module.scss';
 
@@ -15,7 +16,6 @@ const Articles = () => {
 
   const articlesData = useAppSelector((state) => state.article.articlesData);
   const loading: boolean = useAppSelector((state) => state.article.loading);
-
   const total: number = useAppSelector((state) => state.article.total);
 
   const dispatch = useAppDispatch();
@@ -26,7 +26,7 @@ const Articles = () => {
     dispatch(fetchArticles(offset));
   }, [searchPage]);
 
-  const handlePaginationChange = (page: any) => {
+  const handlePaginationChange = (page: string) => {
     setSearchParams({ page: page });
   };
 
@@ -35,7 +35,7 @@ const Articles = () => {
   ) : (
     <>
       <ul className={classes.list}>
-        {articlesData.map((item: any, index: number) => (
+        {articlesData.map((item: ArticleType, index: number) => (
           <li key={index}>
             <ShortArticle article={item} />
           </li>
@@ -47,7 +47,7 @@ const Articles = () => {
         style={{ textAlign: 'center', marginBottom: '15px' }}
         pageSize={5}
         showSizeChanger={false}
-        onChange={(page) => handlePaginationChange(page)}
+        onChange={(page) => handlePaginationChange(String(page))}
         current={searchPage}
       />
     </>
