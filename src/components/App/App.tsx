@@ -3,15 +3,15 @@ import { Routes, Route } from 'react-router-dom';
 
 import { useAppDispatch } from '../types/hooks';
 import Articles from '../Articles/Articles';
-import Layout from '../../Pages/Layout/Layout';
-import ArticlePage from '../../Pages/ArticlePage/ArticlePage';
-import SignUp from '../../Pages/SignUp/SignUp';
-import SignIn from '../../Pages/SignIn/SignIn';
+import Layout from '../../pages/Layout/Layout';
+import ArticlePage from '../../pages/ArticlePage/ArticlePage';
+import SignUp from '../../pages/SignUp/SignUp';
+import SignIn from '../../pages/SignIn/SignIn';
 import { setsIsLoggedIn } from '../../store/userSlice';
 import Profile from '../Profile/Profile';
 import CreateArticle from '../CreateArticle/CreateArticle';
 import EditArticle from '../EditArticle/EditArticle';
-import NotFound from '../../Pages/NotFound/NotFound';
+import NotFound from '../../pages/NotFound/NotFound';
 
 import classes from './App.module.scss';
 

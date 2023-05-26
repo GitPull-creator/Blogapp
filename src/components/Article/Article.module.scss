@@ -50,7 +50,7 @@
 
       opacity: 0;
       &:checked + span::before {
-        background-image: url('../../assets/images/Like-filled.png');
+        background-image: url('../../assets/Like-filled.png');
         cursor: pointer;
       }
     }
@@ -62,7 +62,7 @@
       &:before {
         content: '';
         display: inline-block;
-        background-image: url('../../assets/images/Like-empty.png');
+        background-image: url('../../assets/Like-empty.png');
         width: 1.5em;
         height: 1.5em;
         background-size: 100%;
