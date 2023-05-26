@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import { useAppDispatch } from '../types/hooks';
@@ -18,7 +18,7 @@ import classes from './App.module.scss';
 function App() {
   const dispatch = useAppDispatch();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (localStorage.getItem('token')) {
       dispatch(setsIsLoggedIn());
     }
