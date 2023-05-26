@@ -27,7 +27,7 @@
     margin-bottom: 0;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-line-clamp: 3;
     line-clamp: 3;
     -webkit-box-orient: vertical;
     cursor: pointer;
@@ -138,7 +138,6 @@ svg {
     border-radius: 50%;
     display: block;
     background-position: center center;
-    background-image: url(https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper.png);
   }
   &__name {
     font-size: 18px;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import { useAppDispatch } from '../types/hooks';
-import AllArticles from '../AllArticles/AllArticles';
+import Articles from '../Articles/Articles';
 import Layout from '../Layout/Layout';
 import ArticlePage from '../ArticlePage/ArticlePage';
 import SignUp from '../SignUp/SignUp';
@@ -28,8 +28,8 @@ function App() {
     <div className={classes.App}>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<AllArticles />} />
-          <Route path="articles" element={<AllArticles />} />
+          <Route index element={<Articles />} />
+          <Route path="articles" element={<Articles />} />
           <Route path="articles/:slug" element={<ArticlePage />} />
           <Route path="sign-up" element={<SignUp />} />
           <Route path="sign-in" element={<SignIn />} />

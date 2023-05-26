@@ -56,7 +56,7 @@ const SignIn = () => {
           "
             style={errors.email ? { border: '1px solid red' } : { border: '1px solid #d9d9d9' }}
             {...register('email', {
-              required: 'This field is requierd',
+              required: 'This field is required',
 
               pattern: {
                 value:
@@ -75,7 +75,7 @@ const SignIn = () => {
             type="password"
             placeholder="Password"
             {...register('password', {
-              required: 'This field is requierd',
+              required: 'This field is required',
               minLength: {
                 value: 6,
                 message: 'Your password needs to be at least 6 characters.',

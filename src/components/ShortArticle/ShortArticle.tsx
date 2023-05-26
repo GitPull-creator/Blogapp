@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import moment from 'moment';
+import { format } from 'date-fns';
 import { useEffect, useState } from 'react';
 
 import { ArticlePropsType } from '../types/types';
@@ -16,12 +16,6 @@ const ShortArticle = (props: ArticlePropsType) => {
   const currentArticle = props.article;
   const dispatch = useAppDispatch();
   const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
-
-  function setDate(date: string) {
-    if (date) {
-      return moment(date).format('MMMM D, YYYY');
-    }
-  }
 
   const handleChange = () => {
     setChecked((checked) => !checked);
@@ -75,7 +69,7 @@ const ShortArticle = (props: ArticlePropsType) => {
         <div className={classes.user}>
           <div className={classes.user__wrapper}>
             <p className={classes.user__name}>{currentArticle.author.username}</p>
-            <p className={classes.user__date}>{setDate(currentArticle.updatedAt)}</p>
+            <p className={classes.user__date}>{format(new Date(currentArticle.updatedAt), 'MMMM d, yyyy')}</p>
           </div>
 
           <img

@@ -7,9 +7,9 @@ import { fetchArticles } from '../../store/articlesSlice';
 import ShortArticle from '../ShortArticle/ShortArticle';
 import Spinner from '../Spinner/Spinner';
 
-import classes from './AllArticles.module.scss';
+import classes from './Articles.module.scss';
 
-const AllArticles = () => {
+const Articles = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const searchPage = Number(searchParams.get('page')) || 1;
 
@@ -26,7 +26,7 @@ const AllArticles = () => {
     dispatch(fetchArticles(offset));
   }, [searchPage]);
 
-  const handlePagignationChange = (page: any) => {
+  const handlePaginationChange = (page: any) => {
     setSearchParams({ page: page });
   };
 
@@ -47,11 +47,11 @@ const AllArticles = () => {
         style={{ textAlign: 'center', marginBottom: '15px' }}
         pageSize={5}
         showSizeChanger={false}
-        onChange={(page) => handlePagignationChange(page)}
+        onChange={(page) => handlePaginationChange(page)}
         current={searchPage}
       />
     </>
   );
 };
 
-export default AllArticles;
+export default Articles;

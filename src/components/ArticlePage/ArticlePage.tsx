@@ -1,5 +1,5 @@
-import React from 'react';
 import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../types/hooks';
 import { fetchSoloArticle } from '../../store/articlesSlice';
@@ -11,7 +11,7 @@ const ArticlePage = () => {
   const dispatch = useAppDispatch();
   const { slug } = useParams();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (slug) {
       dispatch(fetchSoloArticle(slug));
     }

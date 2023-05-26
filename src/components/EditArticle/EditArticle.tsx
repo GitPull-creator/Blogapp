@@ -91,7 +91,7 @@ const EditArticle = () => {
               style={errors.title ? { border: '1px solid red' } : { border: '1px solid #d9d9d9' }}
               placeholder="Title"
               {...register('title', {
-                required: 'This field is requierd',
+                required: 'This field is required',
                 minLength: {
                   value: 3,
                   message: 'Minimum 3 characters',
@@ -112,7 +112,7 @@ const EditArticle = () => {
               placeholder="Title
           "
               {...register('description', {
-                required: 'This field is requierd',
+                required: 'This field is required',
 
                 minLength: {
                   value: 3,
@@ -133,7 +133,7 @@ const EditArticle = () => {
               style={errors.body ? { border: '1px solid red' } : { border: '1px solid #d9d9d9' }}
               placeholder="Text"
               {...register('body', {
-                required: 'This field is requierd',
+                required: 'This field is required',
                 minLength: {
                   value: 3,
                   message: 'Minimum 3 characters',

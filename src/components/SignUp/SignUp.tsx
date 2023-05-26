@@ -66,7 +66,7 @@ const SignUp = () => {
             style={errors.username ? { border: '1px solid red' } : { border: '1px solid #d9d9d9' }}
             placeholder="Username"
             {...register('username', {
-              required: 'This field is requierd',
+              required: 'This field is required',
               minLength: {
                 value: 3,
                 message: 'Minimum 3 symbols',
@@ -91,7 +91,7 @@ const SignUp = () => {
             placeholder="Email address
           "
             {...register('email', {
-              required: 'This field is requierd',
+              required: 'This field is required',
 
               pattern: {
                 value:
@@ -111,7 +111,7 @@ const SignUp = () => {
             type="password"
             placeholder="Password"
             {...register('password', {
-              required: 'This field is requierd',
+              required: 'This field is required',
               minLength: {
                 value: 6,
                 message: 'Your password needs to be at least 6 characters.',

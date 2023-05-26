@@ -77,7 +77,7 @@ const Profile = () => {
             style={errors.username ? { border: '1px solid red' } : { border: '1px solid #d9d9d9' }}
             placeholder="username"
             {...register('username', {
-              required: 'This field is requierd',
+              required: 'This field is required',
               minLength: {
                 value: 3,
                 message: 'Minimum 3 symbols',
@@ -102,7 +102,7 @@ const Profile = () => {
           "
             style={errors.email ? { border: '1px solid red' } : { border: '1px solid #d9d9d9' }}
             {...register('email', {
-              required: 'This field is requierd',
+              required: 'This field is required',
 
               pattern: {
                 value:

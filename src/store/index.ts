@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import articlesSlice from './articlesSlice';
-import userSlice from './userSlice';
-import singleArticleSlice from './singleArticleSlice';
+import article from './articlesSlice';
+import user from './userSlice';
+import singleArticle from './singleArticleSlice';
 
 export const store = configureStore({
-  reducer: { article: articlesSlice, singleArticle: singleArticleSlice, user: userSlice },
+  reducer: { article, singleArticle, user },
   devTools: process.env.NODE_ENV !== 'production',
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });

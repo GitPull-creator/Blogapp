@@ -36,9 +36,7 @@ const CreateArticle = () => {
   const { fields, append, remove } = useFieldArray<FormValues>({
     name: 'tags',
     control,
-    rules: {
-      //   required: 'Tags can not be empty',
-    },
+    rules: {},
   });
 
   const onSubmit = handleSubmit((data) => {
@@ -71,7 +69,7 @@ const CreateArticle = () => {
               style={errors.title ? { border: '1px solid red' } : { border: '1px solid #d9d9d9' }}
               placeholder="Title"
               {...register('title', {
-                required: 'This field is requierd',
+                required: 'This field is required',
                 minLength: {
                   value: 3,
                   message: 'Minimum 3 characters',
@@ -92,7 +90,7 @@ const CreateArticle = () => {
               placeholder="Title
           "
               {...register('description', {
-                required: 'This field is requierd',
+                required: 'This field is required',
 
                 minLength: {
                   value: 3,
@@ -113,7 +111,7 @@ const CreateArticle = () => {
               style={errors.body ? { border: '1px solid red' } : { border: '1px solid #d9d9d9' }}
               placeholder="Text"
               {...register('body', {
-                required: 'This field is requierd',
+                required: 'This field is required',
                 minLength: {
                   value: 3,
                   message: 'Minimum 3 characters',
