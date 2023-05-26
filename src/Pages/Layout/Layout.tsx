@@ -3,7 +3,7 @@ import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { message } from 'antd';
 
 import { removeError, fetchUser, setsIsLoggedOut } from '../../store/userSlice';
-import { useAppDispatch, useAppSelector } from '../types/hooks';
+import { useAppDispatch, useAppSelector } from '../../components/types/hooks';
 import { fetchArticles } from '../../store/articlesSlice';
 
 import classes from './Layout.module.scss';

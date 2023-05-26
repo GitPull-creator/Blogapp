@@ -4,7 +4,7 @@ import { message } from 'antd';
 import { useEffect } from 'react';
 
 import { removeError, fetchLogin, setsIsLoggedIn } from '../../store/userSlice';
-import { useAppDispatch, useAppSelector } from '../types/hooks';
+import { useAppDispatch, useAppSelector } from '../../components/types/hooks';
 import { fetchArticles } from '../../store/articlesSlice';
 
 import classes from './SignIn.module.scss';

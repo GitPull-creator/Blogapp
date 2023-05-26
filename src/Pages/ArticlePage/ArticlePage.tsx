@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
-import { useAppDispatch, useAppSelector } from '../types/hooks';
+import { useAppDispatch, useAppSelector } from '../../components/types/hooks';
 import { fetchSoloArticle } from '../../store/articlesSlice';
-import Article from '../Article/Article';
-import Spinner from '../Spinner/Spinner';
+import Article from '../../components/Article/Article';
+import Spinner from '../../components/Spinner/Spinner';
 
 const ArticlePage = () => {
   const articleLoading = useAppSelector((state) => state.article.articleLoading);

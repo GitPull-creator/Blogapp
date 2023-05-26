@@ -3,8 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 import { fetchRegistration, removeError } from '../../store/userSlice';
-import { useAppDispatch, useAppSelector } from '../types/hooks';
-import { AuthDataRegistrationType } from '../types/types';
+import { useAppDispatch, useAppSelector } from '../../components/types/hooks';
+import { AuthDataRegistrationType } from '../../components/types/types';
 
 import classes from './SignUp.module.scss';
 
