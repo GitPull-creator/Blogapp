@@ -88,6 +88,6 @@ const Layout: FC = () => {
         </main>
       </>
     );
-  } else return <div></div>;
+  } else return null;
 };
 export default Layout;

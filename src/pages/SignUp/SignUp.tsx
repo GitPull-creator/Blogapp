@@ -132,7 +132,7 @@ const SignUp = () => {
             style={errors.repeat ? { border: '1px solid red' } : { border: '1px solid #d9d9d9' }}
             placeholder="Password"
             {...register('repeat', {
-              required: 'Passwords must match',
+              required: 'This field is required',
               validate: (value) => value === password || 'Passwords must match',
             })}
           ></input>

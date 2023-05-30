@@ -12,6 +12,17 @@ import Profile from '../Profile/Profile';
 import CreateArticle from '../CreateArticle/CreateArticle';
 import EditArticle from '../EditArticle/EditArticle';
 import NotFound from '../../pages/NotFound/NotFound';
+import {
+  articlePath,
+  articlesPath,
+  createArticlePath,
+  editArticlePath,
+  layoutPath,
+  notFoundPath,
+  profilePath,
+  signInPath,
+  signUpPath,
+} from '../../routes';
 
 import classes from './App.module.scss';
 
@@ -27,16 +38,16 @@ function App() {
   return (
     <div className={classes.App}>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path={layoutPath} element={<Layout />}>
           <Route index element={<Articles />} />
-          <Route path="articles" element={<Articles />} />
-          <Route path="articles/:slug" element={<ArticlePage />} />
-          <Route path="sign-up" element={<SignUp />} />
-          <Route path="sign-in" element={<SignIn />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="new-article" element={<CreateArticle />} />
-          <Route path="articles/:slug/edit" element={<EditArticle />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path={articlesPath} element={<Articles />} />
+          <Route path={articlePath} element={<ArticlePage />} />
+          <Route path={signUpPath} element={<SignUp />} />
+          <Route path={signInPath} element={<SignIn />} />
+          <Route path={profilePath} element={<Profile />} />
+          <Route path={createArticlePath} element={<CreateArticle />} />
+          <Route path={editArticlePath} element={<EditArticle />} />
+          <Route path={notFoundPath} element={<NotFound />} />
         </Route>
       </Routes>
     </div>
