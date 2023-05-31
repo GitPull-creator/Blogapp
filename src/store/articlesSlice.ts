@@ -39,27 +39,33 @@ const initialState: ArticlesState = {
 
 const baseURL = 'https://blog.kata.academy/api/';
 
-export const fetchArticles = createAsyncThunk('articles/fetchArticles', async (s: any) => {
-  const { offset, token } = s;
-  const response = await axios.get(`${baseURL}articles?limit=5&offset=${offset}`, {
-    headers: {
-      Authorization: `Token ${token}`,
-      'Content-Type': 'application/json',
-    },
-  });
-  return response.data;
-});
+export const fetchArticles = createAsyncThunk(
+  'articles/fetchArticles',
+  async (data: { token: string; offset: number }) => {
+    const { offset, token } = data;
+    const response = await axios.get(`${baseURL}articles?limit=5&offset=${offset}`, {
+      headers: {
+        Authorization: `Token ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    return response.data;
+  }
+);
 
-export const fetchSoloArticle = createAsyncThunk('articles/fetchSoloArticle', async (s: any) => {
-  const { slug, token } = s;
-  const response = await axios.get(`${baseURL}articles/${slug}`, {
-    headers: {
-      Authorization: `Token ${token}`,
-      'Content-Type': 'application/json',
-    },
-  });
-  return response.data.article;
-});
+export const fetchSoloArticle = createAsyncThunk(
+  'articles/fetchSoloArticle',
+  async (data: { slug: string; token: string }) => {
+    const { slug, token } = data;
+    const response = await axios.get(`${baseURL}articles/${slug}`, {
+      headers: {
+        Authorization: `Token ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    return response.data.article;
+  }
+);
 
 const articlesSlice = createSlice({
   name: 'articles',
