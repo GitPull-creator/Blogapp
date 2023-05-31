@@ -21,7 +21,7 @@ const Profile = () => {
   const navigate = useNavigate();
 
   const user: UserType = useAppSelector((state) => state.user.user);
-
+  const token = useAppSelector((state) => state.user.user.token);
   const error = useAppSelector((state) => state.user.error);
 
   const {
@@ -56,10 +56,10 @@ const Profile = () => {
 
   const onSubmit = handleSubmit((data) => {
     const changedData = Object.fromEntries(Object.entries(data).filter(([, value]) => value !== '' && value !== null));
-    dispatch(fetchUpdateProfile(changedData));
+    dispatch(fetchUpdateProfile({ token, ...changedData }));
   });
 
-  if (!localStorage.getItem('token')) {
+  if (!token) {
     return <Navigate to="/sign-in" />;
   }
 

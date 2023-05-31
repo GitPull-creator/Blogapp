@@ -2,7 +2,7 @@ import { useForm, useFieldArray } from 'react-hook-form';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { message } from 'antd';
 
-import { useAppDispatch } from '../types/hooks';
+import { useAppDispatch, useAppSelector } from '../types/hooks';
 import { fetchCreatePost } from '../../store/singleArticleSlice';
 
 import classes from './CreateArticle.module.scss';
@@ -15,9 +15,9 @@ type FormValues = {
 };
 
 const CreateArticle = () => {
+  const token = useAppSelector((state) => state.user.user.token);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
   const {
     register,
     formState: { errors },
@@ -52,11 +52,11 @@ const CreateArticle = () => {
       tagList: tagArr,
     };
 
-    dispatch(fetchCreatePost(authData)).then(() => navigate('/articles'));
+    dispatch(fetchCreatePost({ authData, token })).then(() => navigate('/articles'));
     message.success('Article created!');
   });
 
-  if (!localStorage.getItem('token')) {
+  if (!token) {
     return <Navigate to="/sign-in" />;
   } else
     return (

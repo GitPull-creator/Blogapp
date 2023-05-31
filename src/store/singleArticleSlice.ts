@@ -15,32 +15,31 @@ interface InitialStateType {
 
 const baseURL = 'https://blog.kata.academy/api/';
 
-export const fetchCreatePost = createAsyncThunk(
-  'singleArticle/fetchCreatePost',
-  async (authData: CreatePostDataType) => {
-    const response = await axios.post(
-      `${baseURL}articles`,
-      {
-        article: authData,
+export const fetchCreatePost = createAsyncThunk('singleArticle/fetchCreatePost', async (data: any) => {
+  const { authData, token } = data;
+  const response = await axios.post(
+    `${baseURL}articles`,
+    {
+      article: authData,
+    },
+    {
+      headers: {
+        Authorization: `Token ${token}`,
+        'Content-Type': 'application/json',
       },
-      {
-        headers: {
-          Authorization: `Token ${localStorage.getItem('token')}`,
-          'Content-Type': 'application/json',
-        },
-      }
-    );
-    return response.data;
-  }
-);
+    }
+  );
+  return response.data;
+});
 
-export const fetchDeletePost = createAsyncThunk('singleArticle/fetchDeletepost', async (slug: string) => {
+export const fetchDeletePost = createAsyncThunk('singleArticle/fetchDeletepost', async (s: any) => {
+  const { slug, token } = s;
   const response = await axios.delete(
     `${baseURL}articles/${slug}`,
 
     {
       headers: {
-        Authorization: `Token ${localStorage.getItem('token')}`,
+        Authorization: `Token ${token}`,
         'Content-Type': 'application/json',
       },
     }
@@ -58,7 +57,7 @@ export const fetchUpdatePost = createAsyncThunk(
       },
       {
         headers: {
-          Authorization: `Token ${localStorage.getItem('token')}`,
+          Authorization: `Token ${authData.token}`,
           'Content-Type': 'application/json',
         },
       }
@@ -67,7 +66,8 @@ export const fetchUpdatePost = createAsyncThunk(
   }
 );
 
-export const fetchSetLike = createAsyncThunk('singleArticle/fetchSetLike', async (slug: string) => {
+export const fetchSetLike = createAsyncThunk('singleArticle/fetchSetLike', async (s: any) => {
+  const { slug, token } = s;
   const response = await axios.post(
     `${baseURL}articles/${slug}/favorite`,
     {
@@ -76,7 +76,7 @@ export const fetchSetLike = createAsyncThunk('singleArticle/fetchSetLike', async
 
     {
       headers: {
-        Authorization: `Token ${localStorage.getItem('token')}`,
+        Authorization: `Token ${token}`,
         'Content-Type': 'application/json',
       },
     }
@@ -84,13 +84,14 @@ export const fetchSetLike = createAsyncThunk('singleArticle/fetchSetLike', async
   return response.data;
 });
 
-export const fetchRemoveLike = createAsyncThunk('singleArticle/fetchRemoveLike', async (slug: string) => {
+export const fetchRemoveLike = createAsyncThunk('singleArticle/fetchRemoveLike', async (s: any) => {
+  const { slug, token } = s;
   const response = await axios.delete(
     `${baseURL}articles/${slug}/favorite`,
 
     {
       headers: {
-        Authorization: `Token ${localStorage.getItem('token')}`,
+        Authorization: `Token ${token}`,
         'Content-Type': 'application/json',
       },
     }

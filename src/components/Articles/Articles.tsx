@@ -17,13 +17,13 @@ const Articles = () => {
   const articlesData = useAppSelector((state) => state.article.articlesData);
   const loading: boolean = useAppSelector((state) => state.article.loading);
   const total: number = useAppSelector((state) => state.article.total);
-
+  const token = useAppSelector((state) => state.user.user.token);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     setSearchParams({ page: searchPage.toString() || '1' });
     const offset = searchPage ? searchPage * 5 - 5 : 1;
-    dispatch(fetchArticles(offset));
+    dispatch(fetchArticles({ offset, token }));
   }, [searchPage]);
 
   const handlePaginationChange = (page: string) => {

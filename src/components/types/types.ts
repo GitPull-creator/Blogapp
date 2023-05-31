@@ -54,6 +54,7 @@ export interface UpdatePostDataType {
     tagList: string[];
   };
   slug: string | undefined;
+  token: string;
 }
 
 export interface CreatePostDataType {

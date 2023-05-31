@@ -23,12 +23,12 @@ const EditArticle = () => {
 
   const currentArticle = useAppSelector((state) => state.article.currentArticle);
   const username = useAppSelector((state) => state.user.user.username);
-
+  const token = useAppSelector((state) => state.user.user.token);
   const { slug } = useParams();
 
   useEffect(() => {
     if (slug) {
-      dispatch(fetchSoloArticle(slug));
+      dispatch(fetchSoloArticle({ slug, token }));
     }
   }, [slug]);
 
@@ -71,6 +71,7 @@ const EditArticle = () => {
         tagList: tagArr,
       },
       slug: slug,
+      token: token,
     };
 
     dispatch(fetchUpdatePost(authData)).then(() => navigate('/articles'));
@@ -78,7 +79,7 @@ const EditArticle = () => {
     message.success('Article updated!');
   });
 
-  if (!localStorage.getItem('token') || currentArticle?.author?.username !== username) {
+  if (!token || currentArticle?.author?.username !== username) {
     return <Navigate to="/sign-in" />;
   } else
     return (

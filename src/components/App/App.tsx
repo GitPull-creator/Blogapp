@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import { useAppDispatch } from '../types/hooks';
+import { useAppDispatch, useAppSelector } from '../types/hooks';
 import Articles from '../Articles/Articles';
 import Layout from '../../pages/Layout/Layout';
 import ArticlePage from '../../pages/ArticlePage/ArticlePage';
@@ -28,9 +28,9 @@ import classes from './App.module.scss';
 
 function App() {
   const dispatch = useAppDispatch();
-
+  const token = useAppSelector((state) => state.user.user.token);
   useEffect(() => {
-    if (localStorage.getItem('token')) {
+    if (token) {
       dispatch(setsIsLoggedIn());
     }
   }, []);

@@ -16,17 +16,17 @@ const ShortArticle = (props: ArticlePropsType) => {
   const currentArticle = props.article;
   const dispatch = useAppDispatch();
   const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
-
+  const token = useAppSelector((state) => state.user.user.token);
   const handleChange = () => {
     setChecked((checked) => !checked);
 
     if (!checked) {
       setLikeCounter((cur) => cur + 1);
-      dispatch(fetchSetLike(props.article.slug));
+      dispatch(fetchSetLike({ slug: props.article.slug, token }));
     }
     if (checked) {
       setLikeCounter((cur) => cur - 1);
-      dispatch(fetchRemoveLike(props.article.slug));
+      dispatch(fetchRemoveLike({ slug: props.article.slug, token }));
     }
   };
 

@@ -20,7 +20,6 @@ export const fetchRegistration = createAsyncThunk(
           },
         }
       );
-      localStorage.setItem('token', response.data.user.token);
 
       return response.data;
     } catch (error) {
@@ -29,10 +28,10 @@ export const fetchRegistration = createAsyncThunk(
   }
 );
 
-export const fetchUser = createAsyncThunk('user/fetchUser', async () => {
+export const fetchUser = createAsyncThunk('user/fetchUser', async (token: string) => {
   const response = await axios.get(`${baseURL}user`, {
     headers: {
-      Authorization: `Token ${localStorage.getItem('token')}`,
+      Authorization: `Token ${token}`,
       'Content-Type': 'application/json',
     },
   });
@@ -52,7 +51,6 @@ export const fetchLogin = createAsyncThunk('user/fetchLogin', async (loginData: 
         },
       }
     );
-    localStorage.setItem('token', response.data.user.token);
 
     return response.data;
   } catch (error) {
@@ -66,21 +64,20 @@ export const fetchLogin = createAsyncThunk('user/fetchLogin', async (loginData: 
 export const fetchUpdateProfile = createAsyncThunk(
   'user/fetchUpdateProfile',
   async (authData: UpdateProfileDataType, { rejectWithValue }) => {
+    const { token, ...rest } = authData;
     try {
       const response = await axios.put(
         `${baseURL}user`,
         {
-          user: authData,
+          user: rest,
         },
         {
           headers: {
-            Authorization: `Token ${localStorage.getItem('token')}`,
+            Authorization: `Token ${token}`,
             'Content-Type': 'application/json',
           },
         }
       );
-      console.log(response);
-      localStorage.setItem('token', response.data.user.token);
       return response.data;
     } catch (error) {
       if (error instanceof AxiosError) return rejectWithValue(Object.entries(error?.response?.data.errors)[0][0]);
@@ -94,6 +91,7 @@ interface initialStateType {
     password: string;
     username: string;
     image?: string;
+    token: string;
   };
   isLoggedIn: boolean;
   userLoading: boolean;
@@ -106,6 +104,7 @@ const initialState: initialStateType = {
     password: '',
     username: '',
     image: '',
+    token: '',
   },
   isLoggedIn: false,
   userLoading: false,

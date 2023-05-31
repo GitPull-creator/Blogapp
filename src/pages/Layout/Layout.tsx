@@ -9,13 +9,14 @@ import { fetchArticles } from '../../store/articlesSlice';
 import classes from './Layout.module.scss';
 
 const Layout: FC = () => {
+  const token = useAppSelector((state) => state.user.user.token);
   const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
   const userLoading = useAppSelector((state) => state.user.userLoading);
   const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(fetchUser());
+    dispatch(fetchUser(token));
   }, []);
 
   const user = useAppSelector((state) => state.user.user);
@@ -25,7 +26,7 @@ const Layout: FC = () => {
     localStorage.clear();
     dispatch(removeError());
     message.success('You have been logged out');
-    dispatch(fetchArticles(0)).then(() => navigate('/articles'));
+    dispatch(fetchArticles({ offset: 0, token })).then(() => navigate('/articles'));
   };
 
   if (!userLoading) {

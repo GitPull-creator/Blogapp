@@ -16,7 +16,7 @@ type FormValues = {
 
 const SignIn = () => {
   const dispatch = useAppDispatch();
-
+  const token = useAppSelector((state) => state.user.user.token);
   const navigate = useNavigate();
   const error = useAppSelector((state) => state.user.error);
 
@@ -38,7 +38,7 @@ const SignIn = () => {
     }
     if (error === 'none') {
       dispatch(setsIsLoggedIn());
-      dispatch(fetchArticles(0)).then(() => navigate('/articles'));
+      dispatch(fetchArticles({ offset: 0, token })).then(() => navigate('/articles'));
 
       dispatch(removeError());
       message.success('Welcome back!');

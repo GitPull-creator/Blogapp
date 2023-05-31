@@ -39,20 +39,22 @@ const initialState: ArticlesState = {
 
 const baseURL = 'https://blog.kata.academy/api/';
 
-export const fetchArticles = createAsyncThunk('articles/fetchArticles', async (page: number) => {
-  const response = await axios.get(`${baseURL}articles?limit=5&offset=${page}`, {
+export const fetchArticles = createAsyncThunk('articles/fetchArticles', async (s: any) => {
+  const { offset, token } = s;
+  const response = await axios.get(`${baseURL}articles?limit=5&offset=${offset}`, {
     headers: {
-      Authorization: `Token ${localStorage.getItem('token')}`,
+      Authorization: `Token ${token}`,
       'Content-Type': 'application/json',
     },
   });
   return response.data;
 });
 
-export const fetchSoloArticle = createAsyncThunk('articles/fetchSoloArticle', async (slug: string) => {
+export const fetchSoloArticle = createAsyncThunk('articles/fetchSoloArticle', async (s: any) => {
+  const { slug, token } = s;
   const response = await axios.get(`${baseURL}articles/${slug}`, {
     headers: {
-      Authorization: `Token ${localStorage.getItem('token')}`,
+      Authorization: `Token ${token}`,
       'Content-Type': 'application/json',
     },
   });

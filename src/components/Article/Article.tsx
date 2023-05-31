@@ -12,7 +12,7 @@ import './Ant.css';
 
 const Article = () => {
   const dispatch = useAppDispatch();
-
+  const token = useAppSelector((state) => state.user.user.token);
   function setDate(date: string) {
     if (date) {
       return moment(date).format('MMMM D, YYYY');
@@ -21,14 +21,13 @@ const Article = () => {
   const navigate = useNavigate();
 
   const confirm = () => {
-    dispatch(fetchDeletePost(currentArticle.slug)).then(() => navigate('/articles'));
+    dispatch(fetchDeletePost({ slug: currentArticle.slug, token })).then(() => navigate('/articles'));
     message.success('Article removed!');
   };
 
   const [checked, setChecked] = useState(false);
   const [likeCounter, setLikeCounter] = useState(0);
   const [loadingImg, setLoadingImg] = useState(true);
-
   const currentArticle = useAppSelector((state) => state.article.currentArticle);
   const username = useAppSelector((state) => state.user.user.username);
   const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
@@ -58,11 +57,11 @@ const Article = () => {
 
     if (!checked) {
       setLikeCounter((cur) => cur + 1);
-      dispatch(fetchSetLike(currentArticle.slug));
+      dispatch(fetchSetLike({ slug: currentArticle.slug, token }));
     }
     if (checked) {
       setLikeCounter((cur) => cur - 1);
-      dispatch(fetchRemoveLike(currentArticle.slug));
+      dispatch(fetchRemoveLike({ slug: currentArticle.slug, token }));
     }
   };
 
