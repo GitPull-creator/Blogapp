@@ -22,7 +22,7 @@ import {
   profilePath,
   signInPath,
   signUpPath,
-} from '../../routes';
+} from '../../constants';
 
 import classes from './App.module.scss';
 

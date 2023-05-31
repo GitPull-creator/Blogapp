@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { message } from 'antd';
 import { useEffect } from 'react';
 
@@ -58,6 +58,10 @@ const Profile = () => {
     const changedData = Object.fromEntries(Object.entries(data).filter(([, value]) => value !== '' && value !== null));
     dispatch(fetchUpdateProfile(changedData));
   });
+
+  if (!localStorage.getItem('token')) {
+    return <Navigate to="/sign-in" />;
+  }
 
   const url =
     watch('image') ||
